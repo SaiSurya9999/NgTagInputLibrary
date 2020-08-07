@@ -20,7 +20,7 @@ export interface styleCustom{
   templateUrl: './check.component.html',
   styleUrls: ['./check.component.scss']
 })
-export class CheckComponent implements OnInit,OnChanges {
+export class CheckComponent implements OnInit {
   @ViewChild('tag', { static: true }) tagInput: ElementRef;
   
 
@@ -68,6 +68,7 @@ export class CheckComponent implements OnInit,OnChanges {
       this.tags.push(this.tagInput.nativeElement.value);
       this.onTag.emit(this.tags);
       this.tagInput.nativeElement.value = "";
+      this.placeHolderDecision();
     }
     
   }
@@ -79,10 +80,20 @@ export class CheckComponent implements OnInit,OnChanges {
     }else if(this.tagInput.nativeElement.value == ""){
       this.flag = true;
     }
+    this.placeHolderDecision();
   }
   directDelete(index){
     this.tags.splice(index,1);
     this.onTag.emit(this.tags);
+    this.placeHolderDecision();
+  }
+
+  placeHolderDecision(){
+    if(this.tags.length > 0){
+      this.inputStyle["placeholder"] = "";
+    }else{
+      this.inputStyle["placeholder"] = this.customStyles.tag_InputPlaceholder;
+    }
   }
 
   dynamicStyles(){
@@ -122,10 +133,8 @@ export class CheckComponent implements OnInit,OnChanges {
     if(this.customStyles.tag_InputPlaceholder != ""){
       this.inputStyle["placeholder"] = this.customStyles.tag_InputPlaceholder;
     }
+    
   }
-ngOnChanges(changes: SimpleChanges){
-  console.log("changes "+changes);
-}
- 
+
 
 }

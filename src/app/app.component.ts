@@ -19,6 +19,32 @@ export class AppComponent {
     tag_InputColor: "",
     tag_InputPlaceholder: "Favourites"
   };
+  typeaheads:any = []
+  states:any = [
+    'Adilabad',
+    'Anantapur',
+    'Chittoor',
+    'Kakinada',
+    'Guntur',
+    'Hyderabad',
+    'Karimnagar',
+    'Khammam',
+    'Krishna',
+    'Kurnool',
+    'Mahbubnagar',
+    'Medak',
+    'Nalgonda',
+    'Nizamabad',
+    'Ongole',
+    'Hyderabad',
+    'Srikakulam',
+    'Nellore',
+    'Visakhapatnam',
+    'Vizianagaram',
+    'Warangal',
+    'Eluru',
+    'Kadapa'
+  ]
 
   tagInput(tags){
     console.log(tags);

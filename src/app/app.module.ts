@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgconfTaginputModule} from 'ngconf-taginput';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,10 @@ import { CheckComponent } from './check/check.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgconfTaginputModule,
+  //  NgconfTypeaheadComponent,
+   // SearchFilterPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

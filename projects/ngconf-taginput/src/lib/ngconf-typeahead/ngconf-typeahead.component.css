@@ -1,0 +1,12 @@
+.typeaheadul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+.typeaheadli{
+   cursor: pointer;
+}
+.typeahead{
+  width: inherit;
+  height: auto;
+}
