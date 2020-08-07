@@ -14,9 +14,7 @@ import { CheckComponent } from './check/check.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgconfTaginputModule,
-  //  NgconfTypeaheadComponent,
-   // SearchFilterPipe
+    NgconfTaginputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

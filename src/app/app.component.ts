@@ -19,8 +19,7 @@ export class AppComponent {
     tag_InputColor: "",
     tag_InputPlaceholder: "Favourites"
   };
-  typeaheads:any = []
-  states:any = [
+  typeaheads:any = [
     'Adilabad',
     'Anantapur',
     'Chittoor',
