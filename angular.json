@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "ngconf-taginput": {
+      "projectType": "library",
+      "root": "projects/ngconf-taginput",
+      "sourceRoot": "projects/ngconf-taginput/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngconf-taginput/tsconfig.lib.json",
+            "project": "projects/ngconf-taginput/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngconf-taginput/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngconf-taginput/src/test.ts",
+            "tsConfig": "projects/ngconf-taginput/tsconfig.spec.json",
+            "karmaConfig": "projects/ngconf-taginput/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngconf-taginput/tsconfig.lib.json",
+              "projects/ngconf-taginput/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "NgTagInputLibrary"
 }

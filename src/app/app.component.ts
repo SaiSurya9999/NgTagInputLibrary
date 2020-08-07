@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'NgTagInputLibrary';
+  customStyles = {
+    iconColor: "",
+    iconSize: "",
+    tagBackground: "",
+    tagFont: "",
+    tagSize: "",
+    tagBox_minHeight: "",
+    tagBox_Height: "",
+    tagBox_Width: "",
+    tagBox_Background: "",
+    tag_InputColor: "",
+    tag_InputPlaceholder: "Favourites"
+  };
+
+  tagInput(tags){
+    console.log(tags);
+  }
 }
