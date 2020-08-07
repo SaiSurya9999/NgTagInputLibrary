@@ -76,20 +76,31 @@ modify the code.
 ```
 **app.component.html**
 ```html
-<input type="text" [(ngModel)]="term" placeholder="States">
-<ngconf-typeahead
-(onSelect)="onSelect($event)" 
-[typeaheads] = "states" 
-[term]="term"
-[stop]="stop"
-></ngconf-typeahead>
+<ngconf-taginput (onTag)="tagInput($event)" [customStyles]="customStyles" [typeaheads]="typeaheads">
+</ngconf-taginput>
 ```
 
 ## Explanation on Component Properties  
-1 **(onSelect)** event is triggered when user interact with the typeahead list showed.  
-2 **[typeaheads]** this input property is to take the data for typeahead preview filter.  
-3 **[term]** this input property is for binding user input to the filter.  
-4 **[stop]** this input property is for force stop typeahead functionality.  
+1 **(onTag)** event is triggered when user adds a tag returns whole tags array added that point of time.  
+2 **[typeaheads]** if you want any typeahead suggestions to the user when adding tags then add those in a array and assign to this property.  
+Module will automatically add filter to the array and give suggestions to the user.
+3 **[customStyles]** There are many styling changes you can do using this configuration property.  
+Structure of the configuration interface for reference.
+```typescript
+export interface styleCustom{
+  iconColor: String,
+  iconSize: String,
+  tagBackground: String,
+  tagFont: String,
+  tagSize: String,
+  tagBox_Background: String,
+  tagBox_minHeight: String,
+  tagBox_Height: String,
+  tagBox_Width:String,
+  tag_InputColor: String,
+  tag_InputPlaceholder: String
+}
+```
 
 ## Styling of Typeahead Suggestions  
 (Styles can be overwritten based on your application theme)   
