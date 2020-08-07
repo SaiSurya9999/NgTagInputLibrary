@@ -83,7 +83,7 @@ modify the code.
 ## Explanation on Component Properties  
 1 **(onTag)** event is triggered when user adds a tag returns whole tags array added that point of time.  
 2 **[typeaheads]** if you want any typeahead suggestions to the user when adding tags then add those in a array and assign to this property.  
-Module will automatically add filter to the array and give suggestions to the user.
+Module will automatically add filter to the array and give suggestions to the user.  
 3 **[customStyles]** There are many styling changes you can do using this configuration property.  
 Structure of the configuration interface for reference.
 ```typescript
