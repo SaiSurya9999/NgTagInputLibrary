@@ -1,8 +1,8 @@
-# Ngconf-Typeahead Library
+# Ngconf-TagInput Library
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
-> ![ngconf-taginput](https://img.icons8.com/office/48/000000/tags.png "Tag Feature") Typeahead Feature for Angular.  
+> ![ngconf-taginput](https://img.icons8.com/office/48/000000/tags.png "Tag Feature") TagInput Feature for Angular.  
 
 
 ### Demo Link   
@@ -19,16 +19,32 @@ Import NgconfTaginputModule in app.module.ts file.
 **app.module.ts**
 ```typescript
 import {NgconfTaginputModule} from 'ngconf-taginput';
+ imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgconfTaginputModule
+  ]
 ```
 
 ## Step - 3
 This step is to quick start the usage of package later with the understanding of workflow you can  
 modify the code.  
 **app.component.ts**
- ```javascript
-  term:any = "";
-  stop:boolean = false;
-  states:any = [
+ ```typescript
+  customStyles = {
+    iconColor: "",
+    iconSize: "",
+    tagBackground: "",
+    tagFont: "",
+    tagSize: "",
+    tagBox_minHeight: "",
+    tagBox_Height: "",
+    tagBox_Width: "",
+    tagBox_Background: "",
+    tag_InputColor: "",
+    tag_InputPlaceholder: "Favourites"
+  };
+  typeaheads:any = [
     'Adilabad',
     'Anantapur',
     'Chittoor',
@@ -54,8 +70,8 @@ modify the code.
     'Kadapa'
   ]
 
-  onSelect(item){
-    this.term = item;
+  tagInput(tags){
+    console.log(tags);
   }
 ```
 **app.component.html**
