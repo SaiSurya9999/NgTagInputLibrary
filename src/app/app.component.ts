@@ -13,8 +13,8 @@ export class AppComponent {
     tagFont: "",
     tagSize: "",
     tagBox_minHeight: "",
-    tagBox_Height: "",
-    tagBox_Width: "",
+    tagBox_Height: "inherit",
+    tagBox_Width: "inherit",
     tagBox_Background: "",
     tag_InputColor: "",
     tag_InputPlaceholder: "Favourites"
@@ -43,9 +43,13 @@ export class AppComponent {
     'Warangal',
     'Eluru',
     'Kadapa'
-  ]
+  ];
+  allowedTags =  [];
 
   tagInput(tags){
     console.log(tags);
+  }
+  onFail(msg){
+    alert(msg);
   }
 }

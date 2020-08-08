@@ -1,4 +1,6 @@
-<ngconf-taginput (onTag)="tagInput($event)" [customStyles]="customStyles"
-[typeaheads]="typeaheads">
-
-</ngconf-taginput>
+<div class="col-md-6">
+    <ngconf-taginput (onTag)="tagInput($event)" [customStyles]="customStyles"
+    [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)">
+    
+    </ngconf-taginput>
+</div>

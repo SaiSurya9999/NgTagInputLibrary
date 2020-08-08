@@ -103,8 +103,13 @@ export class NgconfTaginputComponent implements OnInit {
 
   //To set typeahead data to filter
   @Input() typeaheads: Array<any>;
+
+  //To set allowed tags data to filter
+  @Input() allowed: Array<any>;
   
   @Output() onTag = new EventEmitter<any>();
+
+  @Output() onFail = new EventEmitter<any>();
 
   tags:Array<any> = [];
   flag:boolean = false;
@@ -121,15 +126,18 @@ export class NgconfTaginputComponent implements OnInit {
   tagBoxStyles:any = {
     "background": "#fff",
     "min-height": "100px",
+    
     "height": "auto",
      "width": "300px"
   }
+ 
   inputStyle:any = {
     "background": this.tagBoxStyles.background,
     "color": "black",
-    "max-width": this.tagBoxStyles.width,
+    "max-width": "100%",
     "font-size": this.tagStyles["font-size"],
-    "placeholder": ""
+    "placeholder": "",
+    
   }
   term:any = "";
   stop:boolean = false;
@@ -141,17 +149,23 @@ export class NgconfTaginputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.customStyles);
+   
     this.dynamicStyles();
     this.onTag.emit(this.tags);
+   
   }
   onSelect(item){
     this.term = item;
   }
   onEnter(){
     if(this.term != ""){
-      this.tags.push(this.term);
-      this.onTag.emit(this.tags);
+      let check = this.checkAllowed(this.term);
+      if(check){
+        this.tags.push(this.term);
+        this.onTag.emit(this.tags);
+      }else{
+        this.onFail.emit("Not Allowed Tag");
+      }
       this.term = "";
       this.placeHolderDecision();
     }
@@ -181,6 +195,20 @@ export class NgconfTaginputComponent implements OnInit {
     }
   }
 
+  checkAllowed(value): boolean{
+    if(this.allowed.length > 0){
+      for(let k=0; k<this.allowed.length; k++){
+           if(this.allowed[k].toString().toLowerCase() == value){
+             return true;
+           }
+      }
+      return false;
+    }else{
+      return true;
+    }
+    
+  }
+
   dynamicStyles(){
     if(this.customStyles.iconColor != ""){
       this.svgStyles.fill = this.customStyles.iconColor;
@@ -195,7 +223,7 @@ export class NgconfTaginputComponent implements OnInit {
       this.customStyles['font-size'] = this.customStyles.tagSize;
     }
     if(this.customStyles.iconSize != ""){
-      console.log("Came Here");
+      
        this.svgStyles["height"] = this.customStyles.iconSize;
        this.svgStyles["width"] = this.customStyles.iconSize;
     }
@@ -208,9 +236,11 @@ export class NgconfTaginputComponent implements OnInit {
     }
     if(this.customStyles.tagBox_Width != ""){
       this.tagBoxStyles["width"] = this.customStyles.tagBox_Width;
+      
     }
     if(this.customStyles.tagBox_Background != ""){
       this.tagBoxStyles["background"] = this.customStyles.tagBox_Background;
+      this.inputStyle["background"] = this.customStyles.tagBox_Background;
     }
     if(this.customStyles.tag_InputColor != ""){
       this.inputStyle["color"] = this.customStyles.tag_InputColor;

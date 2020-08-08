@@ -27,7 +27,7 @@ export class NgconfTypeaheadComponent implements OnInit,OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.term);
+    
   }
 
  onSelectItem(item){
@@ -37,7 +37,7 @@ export class NgconfTypeaheadComponent implements OnInit,OnChanges {
  }
 
  ngOnChanges(changes: SimpleChanges){
-   console.log(changes);
+ 
    if(changes.term){
     if(changes.term.currentValue != this.selectedItem){
        this.flag = true;
