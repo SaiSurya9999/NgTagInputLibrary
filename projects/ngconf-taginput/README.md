@@ -69,14 +69,18 @@ modify the code.
     'Eluru',
     'Kadapa'
   ]
-
+  allowedTags =  [];
+  
   tagInput(tags){
     console.log(tags);
+  }
+  onFail(msg){
+    alert(msg);
   }
 ```
 **app.component.html**
 ```html
-<ngconf-taginput (onTag)="tagInput($event)" [customStyles]="customStyles" [typeaheads]="typeaheads">
+<ngconf-taginput (onTag)="tagInput($event)" [customStyles]="customStyles" [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)">
 </ngconf-taginput>
 ```
 
@@ -85,6 +89,8 @@ modify the code.
 2 **[typeaheads]** if you want any typeahead suggestions to the user when adding tags then add those in a array and assign to this property.  
 Module will automatically add filter to the array and give suggestions to the user.  
 3 **[customStyles]** There are many styling changes you can do using this configuration property.  
+4. **[allowed]** This property is usefull when you want user to enter only allowed tags. This can be left with an empty array if you dont want to use it.  
+5. **(onFail)** This event is triggered when you use allowed tags feature when user tried to input wrong tag which is not present in allowed tags.  
 Structure of the configuration interface for reference.
 ```typescript
 export interface styleCustom{
