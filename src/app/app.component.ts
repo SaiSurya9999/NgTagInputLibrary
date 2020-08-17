@@ -17,7 +17,8 @@ export class AppComponent {
     tagBox_Width: "inherit",
     tagBox_Background: "",
     tag_InputColor: "",
-    tag_InputPlaceholder: "Favourites"
+    tag_InputPlaceholder: "Favourites",
+    tagBox_fontColor: "pink"
   };
   typeaheads:any = [
     'Adilabad',

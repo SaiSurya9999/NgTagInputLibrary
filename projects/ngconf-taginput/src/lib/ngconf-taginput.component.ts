@@ -7,6 +7,7 @@ export interface styleCustom{
   tagSize: String,
   tagBox_Background: String,
   tagBox_minHeight: String,
+  tagBox_fontColor: String,
   tagBox_Height: String,
   tagBox_Width:String,
   tag_InputColor: String,
@@ -121,12 +122,12 @@ export class NgconfTaginputComponent implements OnInit {
   tagStyles:any = {
     "background": "#eee",
     "font-style": "normal",
-    "font-size": "21px"
+    "font-size": "21px",
+    "color": "black",
   }
   tagBoxStyles:any = {
     "background": "#fff",
     "min-height": "100px",
-    
     "height": "auto",
      "width": "300px"
   }
@@ -210,6 +211,9 @@ export class NgconfTaginputComponent implements OnInit {
   }
 
   dynamicStyles(){
+    if(this.customStyles.tagBox_fontColor != ""){
+      this.tagStyles.color = this.customStyles.tagBox_fontColor;
+    }
     if(this.customStyles.iconColor != ""){
       this.svgStyles.fill = this.customStyles.iconColor;
     }

@@ -42,7 +42,8 @@ modify the code.
     tagBox_Width: "",
     tagBox_Background: "",
     tag_InputColor: "",
-    tag_InputPlaceholder: "Favourites"
+    tag_InputPlaceholder: "Favourites",
+    tagBox_fontColor: ""
   };
   typeaheads:any = [
     'Adilabad',
@@ -104,6 +105,7 @@ export interface styleCustom{
   tagBox_Height: String,
   tagBox_Width:String,
   tag_InputColor: String,
+  tagBox_fontColor: String,
   tag_InputPlaceholder: String
 }
 ```
