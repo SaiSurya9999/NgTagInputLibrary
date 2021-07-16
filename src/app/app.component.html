@@ -1,6 +1,8 @@
 <div class="col-md-6">
-    <ngconf-taginput (onTag)="tagInput($event)" [customStyles]="customStyles"
-    [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)">
+    <ngconf-taginput [initialOptions]="true" (onTag)="tagInput($event)" [customStyles]="customStyles"
+    [tags]="['hello']" [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)">
     
     </ngconf-taginput>
+    <!-- <app-check (onTag)="tagInput($event)" [customStyles]="customStyles"
+    [tags]="defaultValues" [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)"></app-check> -->
 </div>

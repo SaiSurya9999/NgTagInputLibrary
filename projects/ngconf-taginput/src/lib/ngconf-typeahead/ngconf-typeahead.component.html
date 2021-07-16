@@ -6,3 +6,12 @@
     </ul>
     
   </div>
+
+  <div class="typeahead" *ngIf="term =='' && flag && !forceStop && initialOptions">
+    <ul class="typeaheadul" *ngIf="typeaheads.length > 0">
+        <li class="typeaheadli" (click)="onSelectItem(item)" *ngFor="let item of typeaheads;">
+            {{item}}
+        </li>
+    </ul>
+    
+  </div>

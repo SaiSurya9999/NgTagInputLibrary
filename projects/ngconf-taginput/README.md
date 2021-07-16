@@ -109,6 +109,11 @@ export interface styleCustom{
   tag_InputPlaceholder: String
 }
 ```
+6. tag input attribute is available to set default values to the component.
+```html
+<ngconf-taginput tags="['hello']" (onTag)="tagInput($event)" [customStyles]="customStyles" [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)">
+</ngconf-taginput>
+```
 
 ## Styling of Typeahead Suggestions  
 (Styles can be overwritten based on your application theme)   

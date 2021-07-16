@@ -20,6 +20,8 @@ export class AppComponent {
     tag_InputPlaceholder: "Favourites",
     tagBox_fontColor: "pink"
   };
+
+  defaultValues:Array<any> = ["test", "test"];
   typeaheads:any = [
     'Adilabad',
     'Anantapur',
