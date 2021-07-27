@@ -1,5 +1,5 @@
 <div class="col-md-6">
-    <ngconf-taginput [initialOptions]="true" (onTag)="tagInput($event)" [customStyles]="customStyles"
+    <ngconf-taginput (onFocus)="onFocus($event)" [initialOptions]="false" (onTag)="tagInput($event)" [customStyles]="customStyles"
     [tags]="['hello']" [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)">
     
     </ngconf-taginput>

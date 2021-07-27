@@ -1,17 +1,18 @@
 <div class="typeahead" *ngIf="term !='' && flag && !forceStop">
     <ul class="typeaheadul" *ngIf="typeaheads.length > 0">
-        <li class="typeaheadli" (click)="onSelectItem(item)" *ngFor="let item of typeaheads | searchFilter: { term: term, prop: prop }">
+        <li class="typeaheadli" (click)="onSelectItem(item)"
+            *ngFor="let item of typeaheads | searchFilter: { term: term, prop: prop }">
             {{item}}
         </li>
     </ul>
-    
-  </div>
 
-  <div class="typeahead" *ngIf="term =='' && flag && !forceStop && initialOptions">
+</div>
+
+<div class="typeahead" *ngIf="term ==='' && flag && !forceStop && initialOptions==true && preview==true">
     <ul class="typeaheadul" *ngIf="typeaheads.length > 0">
         <li class="typeaheadli" (click)="onSelectItem(item)" *ngFor="let item of typeaheads;">
             {{item}}
         </li>
     </ul>
-    
-  </div>
+
+</div>

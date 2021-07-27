@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngconf-typeahead',
   templateUrl: './ngconf-typeahead.component.html',
   styleUrls: ['./ngconf-typeahead.component.css']
 })
-export class NgconfTypeaheadComponent implements OnChanges {
+export class NgconfTypeaheadComponent implements OnChanges, OnInit {
   //To filter the typeahead data with user input 
   @Input() term: String;
 
@@ -17,6 +17,8 @@ export class NgconfTypeaheadComponent implements OnChanges {
 
   @Input() initialOptions: boolean = false;
 
+  @Input() preview: boolean = false;
+
   //To Emit when user Interact with the typeahead list
   @Output() onSelect = new EventEmitter<any>();
 
@@ -25,9 +27,13 @@ export class NgconfTypeaheadComponent implements OnChanges {
   forceStop: boolean = false;
   selectedItem: any = "";
 
+
   constructor() { }
 
-
+  ngOnInit() {
+    this.preview = this.initialOptions;
+    // console.log(`Preview ${this.preview}`);
+  }
 
   onSelectItem(item) {
     this.selectedItem = item;
@@ -36,7 +42,6 @@ export class NgconfTypeaheadComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
     if (changes.term) {
       if (changes.term.currentValue != this.selectedItem) {
         this.flag = true;
@@ -46,6 +51,5 @@ export class NgconfTypeaheadComponent implements OnChanges {
     if (changes.stop) {
       this.forceStop = changes.stop.currentValue;
     }
-
   }
 }

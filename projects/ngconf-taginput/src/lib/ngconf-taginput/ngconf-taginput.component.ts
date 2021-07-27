@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter, HostListener } from '@angular/core';
 export interface styleCustom {
   iconColor: String,
   iconSize: String,
@@ -15,28 +15,7 @@ export interface styleCustom {
 }
 @Component({
   selector: 'ngconf-taginput',
-  template: `
-  <div  class="tag-container" (click)="tag.focus()" [ngStyle]="tagBoxStyles">
-   <span class="tag" [ngStyle]="tagStyles" title="Delete" 
-   *ngFor="let item of tags; let i = index"
-   >{{item}} 
-   <svg (click)="directDelete(i)"  
-     [ngStyle]="svgStyles" class="icon"
-    viewBox="0 0 329.26933 329" xmlns="http://www.w3.org/2000/svg"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
-</span>
-   
-   <input (click)="onFocusHandler()" (keyup.enter)="onEnter()" id="test" [ngStyle]="inputStyle" [placeholder]="inputStyle['placeholder']"
-   (keyup.Backspace)="onDelete()" [(ngModel)]="term" #tag  class="tagInput" type="text">
-   <ngconf-typeahead
-   (onSelect)="onSelect($event)" 
-   [typeaheads] = "typeaheads" 
-   [initialOptions]="initialOptions"
-   [term]="term"
-   [stop]="stop"
-   ></ngconf-typeahead>
-   </div>
-
-  `,
+  templateUrl: './ngconf-taginput.component.html',
   styles: [
     `.tag-container{
       border: 2px solid #ccc;
@@ -119,6 +98,9 @@ export class NgconfTaginputComponent implements OnInit {
 
   @Input() initialOptions: boolean = false;
 
+  preview: boolean = false;
+
+
   flag: boolean = false;
   svgStyles: any = {
     "fill": "purple",
@@ -156,10 +138,10 @@ export class NgconfTaginputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    this.preview = this.initialOptions;
+    // console.log(`This is the preview ${this.preview}`);
     this.dynamicStyles();
     this.onTag.emit(this.tags);
-
   }
   onSelect(item) {
     this.term = item;
@@ -179,10 +161,15 @@ export class NgconfTaginputComponent implements OnInit {
 
   }
 
-  onFocusHandler() {
-    this.initialOptions = true;
-    this.onFocus.emit("User clicked on the input area."); 
+
+  onFocusHandler(isFocus) {
+    setTimeout(() => {
+      this.initialOptions = isFocus;
+      // console.log(`Focus from tag input: ${this.initialOptions} and Preview ${this.preview}`);
+      this.onFocus.emit(isFocus);
+    }, 300);
   }
+
   onDelete() {
     if (this.term == "" && this.flag) {
       this.tags.pop();
